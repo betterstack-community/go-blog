@@ -1,0 +1,22 @@
+{{ define "content" }}
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-8 is-offset-2">
+        <div class="card article">
+          <div class="card-content">
+            <h1 class="title">{{ .Post.Title }}</h1>
+            <div class="content article-body">
+              {{ .Post.Content }}
+            </div>
+          </div>
+          <footer class="card-footer">
+            <a href="/post/{{ .Post.ID }}/edit" class="card-footer-item">Edit</a>
+            <a href="/post/{{ .Post.ID }}/delete" class="card-footer-item">Delete</a>
+          </footer>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{{ end }}

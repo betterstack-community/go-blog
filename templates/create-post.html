@@ -1,0 +1,35 @@
+{{ define "content" }}
+<section class="section">
+  <div class="container">
+    <h1 class="title">{{ if .Post.ID }}Edit Post{{ else }}Create Post{{ end }}</h1>
+
+    <form method="post" action="{{ if .Post.ID }}/post/{{ .Post.ID }}/edit{{ else
+      }}/posts/new{{ end }}">
+      <div class="field">
+        <label class="label" for="title">Title:</label>
+        <div class="control">
+          <input class="input" type="text" id="title" name="title" value="{{
+ if .Post }}{{ .Post.Title }}{{ end }}">
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label" for="content">Content:</label>
+        <div class="control">
+          <textarea class="textarea" id="content" name="content">{{
+            if .Post.ID }}{{ .Post.Content }}{{ end }}</textarea>
+        </div>
+      </div>
+
+      <div class="field is-grouped">
+        <div class="control">
+          <button class="button is-link" type="submit">{{ if .Post.ID }}Update{{ else }}Create{{ end }}</button>
+        </div>
+        <div class="control">
+          <a href="/" class="button is-link is-light">Cancel</a>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>
+{{ end }}

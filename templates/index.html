@@ -1,0 +1,34 @@
+{{ define "content" }}
+<section class="section">
+  <div class="container">
+    <h1 class="title">Blog Posts</h1>
+
+    {{ if .Posts }}
+    <div class="columns is-multiline">
+      {{ range .Posts }}
+      <div class="column is-one-third">
+        <div class="card">
+          <div class="card-content">
+            <p class="title">
+              <a href="/post/{{ .ID }}">{{ .Title }}</a>
+            </p>
+            <p class="content">
+              {{ printf "%.40s" .Content }}
+            </p>
+          </div>
+          <footer class="card-footer">
+            <a href="/post/{{ .ID }}/edit" class="card-footer-item">Edit</a>
+            <a href="/post/{{ .ID }}/delete" class="card-footer-item">Delete</a>
+          </footer>
+        </div>
+      </div>
+      {{ end }}
+    </div>
+    {{ else }}
+    <div class="empty-state has-text-centered">
+      <p class="subtitle">No posts yet.</p>
+      <a href="/posts/new" class="button is-primary">Create one</a>
+    </div>
+    {{ end }}
+  </div>
+  {{ end }}
