@@ -1,27 +1,22 @@
-# Title of the project
+# Blog App
 
-Description of the project.
+A Blogging App built with Go and PostgreSQL. See the
+[final branch](https://github.com/betterstack-community/go-blog/tree/final) for
+the updated code with Docker configuration.
 
-**Tutorial**: [Link to corresponding BetterStack tutorial]()
+**Tutorial**:
+[Dockerizing Go Applications: A Step-by-Step Guide](https://betterstack.com/community/guides/scaling-go/dockerize-golang/)
 
-![Screenshot or GIF of the application in action](screenshot.png)
+![Go Blog App](screenshot.png)
 
 ## 🟢 Prerequisites
 
-A list of requirements and package versions that the reader needs to build and
-run the project.
+- Prior Go development experience.
+- Familiarity with the Linux command-line.
+- Access to a Linux machine with
+  [Docker Engine](https://docs.docker.com/engine/install/) installed.
 
-- The first thing.
-- The second thing.
+## Getting started
 
-## 📦 Getting started
-
-A brief guide to setting up the project.
-
-- Do the first thing.
-- Do the next thing.
-
-## ⚖ License
-
-The code used in this project and in the linked tutorial are licensed under the
-[Apache License, Version 2.0](LICENSE)
+Find the set up instructions in
+[step 1 of the article](https://betterstack.com/community/guides/scaling-go/dockerize-golang/#step-1-setting-up-the-demo-project).
