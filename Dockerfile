@@ -1,5 +1,5 @@
-# Use Go 1.23 alpine as base image
-FROM golang:1.23-alpine AS base
+# Use Go 1.23 bookworm as base image
+FROM golang:1.23-bookworm AS base
 
 # Development stage
 # =============================================================================
@@ -39,12 +39,13 @@ RUN go mod download
 COPY . .
 
 # Build the application
-RUN go build -o go-blog
+# Turn off CGO to ensure static binaries
+RUN CGO_ENABLED=0 go build -o go-blog
 
 # Production stage
 # =============================================================================
 # Create a production stage to run the application binary
-FROM alpine:3.20 AS production
+FROM scratch AS production
 
 # Move to working directory /prod
 WORKDIR /prod

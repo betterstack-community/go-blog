@@ -22,7 +22,7 @@ services:
       - .:/app
 
   caddy:
-    image: caddy:alpine
+    image: caddy
     container_name: go-blog-caddy
     depends_on:
       - app
@@ -36,7 +36,7 @@ services:
       - go-blog-network
 
   postgres:
-    image: postgres:alpine
+    image: postgres:bookworm
     restart: always
     container_name: go-blog-db
     env_file:
