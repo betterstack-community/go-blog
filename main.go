@@ -82,7 +82,7 @@ func main() {
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		switch r.Method {
-		case "GET":
+		case http.MethodGet:
 			getPosts(w, r)
 		default:
 			http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
@@ -91,9 +91,9 @@ func main() {
 
 	http.HandleFunc("/posts/new", func(w http.ResponseWriter, r *http.Request) {
 		switch r.Method {
-		case "POST":
+		case http.MethodPost:
 			createPost(w, r)
-		case "GET":
+		case http.MethodGet:
 			postFormTmpl.ExecuteTemplate(
 				w,
 				"default",
@@ -108,7 +108,7 @@ func main() {
 		"/post/{id}/edit",
 		func(w http.ResponseWriter, r *http.Request) {
 			switch r.Method {
-			case "GET":
+			case http.MethodGet:
 				post, err := getPost(r)
 				if err != nil {
 					http.Error(w, err.Error(), http.StatusBadRequest)
@@ -120,7 +120,7 @@ func main() {
 					"default",
 					struct{ Post *models.Post }{post},
 				)
-			case "POST":
+			case http.MethodPost:
 				updatePost(w, r)
 			default:
 				http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
@@ -132,7 +132,7 @@ func main() {
 		"/post/{id}/delete",
 		func(w http.ResponseWriter, r *http.Request) {
 			switch r.Method {
-			case "GET":
+			case http.MethodGet:
 				deletePost(w, r)
 			default:
 				http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
@@ -142,7 +142,7 @@ func main() {
 
 	http.HandleFunc("/post/{id}", func(w http.ResponseWriter, r *http.Request) {
 		switch r.Method {
-		case "GET":
+		case http.MethodGet:
 			post, err := getPost(r)
 			if err != nil {
 				http.Error(w, err.Error(), http.StatusBadRequest)
@@ -170,7 +170,7 @@ func main() {
 
 	http.HandleFunc("/health", func(w http.ResponseWriter, r *http.Request) {
 		switch r.Method {
-		case "GET":
+		case http.MethodGet:
 			w.Write([]byte("OK"))
 		default:
 			http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
